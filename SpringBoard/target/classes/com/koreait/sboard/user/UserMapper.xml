@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.koreait.sboard.user.UserMapper">
+
+	<select id="selUserList" resultType="UserEntity">
+		SELECT * FROM t_user
+	</select>
+	
+	<select id="selUser" resultType="UserEntity">
+		select * 
+		from t_user 
+		where user_id = #{user_id}
+	</select>
+	
+	<insert id="insUser">
+		INSERT INTO t_user
+		(user_id, user_pw, salt, nm, gender, ph)
+		VALUES
+		(#{user_id}, #{user_pw}, #{salt}, #{nm}, #{gender}, #{ph})
+	</insert>
+	
+	
+</mapper>  

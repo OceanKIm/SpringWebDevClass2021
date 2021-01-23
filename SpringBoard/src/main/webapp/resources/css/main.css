@@ -1,0 +1,27 @@
+
+table.fileList {
+    border-collapse: separate;
+    border-spacing: 1px;
+    text-align: center;
+    line-height: 1;
+    border-top: 1px solid #ccc;
+    margin : 10px 5px;
+}
+table.fileList th {
+    width: 30px;
+    padding: 5px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+table.fileList td {
+    width: 100px;
+    padding: 5px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+
+#option form {
+	float:left
+}
+
