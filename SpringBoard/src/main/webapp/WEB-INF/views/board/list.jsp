@@ -20,7 +20,7 @@
 	</div>
 	<div>
 		<c:if test="${loginUser != null}">
-				<a href="/board/reg.korea?typ=${param.typ == null ? 1 : param.typ}"><button>글등록</button></a>
+				<a href="/board/regmod?typ=${param.typ == null ? 1 : param.typ}"><button>글등록</button></a>
 		</c:if>
 		<select id="selectmenu" onchange="selPageCnt(${param.typ == null ? 1 : param.typ});">
 		    <option value="" selected="selected">갯수 선택</option>

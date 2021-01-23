@@ -8,12 +8,17 @@
 			${data != null ? '글수정':'글등록'}
 		</h3>
 	</div>
-	<form action="/board/${param.i_board == null ? 'regProc.korea':'modProc.korea'}" method="post" id="frm">
+	<form action="/board/${param.i_board == null ? 'reg':'mod'}" method="post" id="frm">
 		<div>
 			<input type="hidden" name="typ" value="${param.typ}">	
 		</div>
 		<div>
-			<input type="hidden" name="i_board" value="${data.i_board}">
+			<c:if test="${param.i_board == null}">
+				<input type="hidden" name="i_board" value="0">
+			</c:if>
+			<c:if test="${param.i_board != null}">
+				<input type="hidden" name="i_board" value="${data.i_board}">
+			</c:if>
 		</div>
 		<div>
 			제목 : <input type="text" name="title" value="${data.title}" required>

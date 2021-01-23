@@ -8,14 +8,14 @@ function selPageCnt(typ) {
 
 // 디테일 이동.
 function clkArticle(typ, i_board) {
-	var url = `/board/detail.korea?typ=${typ}&i_board=${i_board}`;
+	var url = `/board/detail?typ=${typ}&i_board=${i_board}`;
 	location.href = url;
 }
 
 // 글삭제
 function clkDel(i_board, typ) {
 	if(confirm('정말 삭제 하시겠습니까?')) {
-		location.href = `/board/del.korea?typ=${typ}&i_board=${i_board}`;
+		location.href = `/board/del?typ=${typ}&i_board=${i_board}`;
 	}
 }
 

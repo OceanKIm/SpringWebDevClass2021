@@ -55,7 +55,7 @@ public class UserController extends MainController{
 		return "redirect:/user/login";
 	}
 	
-	@RequestMapping("/join")
+	@GetMapping("/join")
 	public void join(Model model) {
 		model.addAttribute("menus", mainService.selManagerBoardList());
 		model.addAttribute("title", "회원가입");

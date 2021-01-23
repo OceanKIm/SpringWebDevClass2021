@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.koreait.sboard.board.BoardMapper">
+
+	<select id="selBoardList" resultType="BoardSEL">
+		SELECT A.i_board, A.seq, A.title, A.r_dt, A.m_dt, A.hits, IFNULL(B.nm, '탈퇴회원') AS writer_nm,
+		IFNULL(C.favorite_cnt, 0) AS favorite_cnt
+		FROM t_board A
+		LEFT JOIN t_user B 
+		ON A.i_user = B.i_user  
+		LEFT JOIN (SELECT i_board, COUNT(i_user) AS favorite_cnt
+		FROM t_board_favorite
+		GROUP BY i_board) C
+		ON A.i_board = C.i_board
+		WHERE typ = #{typ}
+		ORDER BY seq DESC
+	</select>
+	
+	<select id="selBoard" resultType="BoardSEL">
+		SELECT A.i_board, A.seq, A.title, A.ctnt, A.r_dt, A.m_dt, A.hits, ifnull(B.nm, '탈퇴회원') AS writer_nm, A.i_user,
+		ifnull(C.favorite_cnt, 0) AS favorite_cnt, case when D.i_board IS NULL then 0 ELSE 1 end AS is_favorite 
+		FROM t_board A
+		LEFT JOIN t_user B
+		ON A.i_user = B.i_user
+		LEFT JOIN (SELECT i_board, COUNT(i_user) AS favorite_cnt
+		FROM t_board_favorite
+		GROUP BY i_board) C
+		ON A.i_board = C.i_board
+		LEFT JOIN t_board_favorite D
+		ON A.i_board = D.i_board
+		and D.i_user = #{i_user}
+		WHERE A.i_board = #{i_board}
+		ORDER BY seq DESC
+	</select>
+	
+	<delete id="del">
+		DELETE FROM t_board where i_board = #{i_board} and i_user = #{i_user}
+	</delete>
+	
+	<insert id="reg">
+		INSERT INTO t_board (typ, seq, title, ctnt, i_user)
+		SELECT #{typ}, ifnull(max(seq), 0) + 1, #{title}, #{ctnt}, #{i_user}
+		FROM t_board WHERE typ = #{typ}
+	</insert>
+	
+	<update id="mod">
+		update t_board 
+		set title = #{title} , ctnt = #{ctnt} 
+		where i_board = #{i_board} and i_user = #{i_user}
+	</update>
+	
+	
+	
+</mapper>  
+
+
+
+
+
+
+
+

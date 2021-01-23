@@ -29,7 +29,7 @@
 	<c:if test="${loginUser.i_user == data.i_user}">
 		<div>
 			<button onclick="clkDel(${data.i_board}, ${param.typ})">글삭제</button>
-			<a href="/board/mod.korea?i_board=${data.i_board}&typ=${param.typ}"><button>글수정</button></a>
+			<a href="/board/regmod?i_board=${data.i_board}&typ=${param.typ}"><button>글수정</button></a>
 		</div>		
 	</c:if>
 	<div style="margin-top: 20px;">
