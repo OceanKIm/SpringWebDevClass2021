@@ -35,7 +35,7 @@
 	<div style="margin-top: 20px;">
 		<c:if test="${loginUser != null}">
 			<div>
-				<form action="/board/cmt/reg.korea" method="post">
+				<form action="/board/cmt/reg" method="post">
 					<input type="hidden" name="typ" value="${param.typ}">
 					<input type="hidden" name="i_board" value="${data.i_board}">
 					댓글 : <input type="text" name="ctnt">
@@ -64,7 +64,7 @@
 						<td class="emp" id="unemp_${item.i_cmt}" onclick="clkUnemp(${item.i_cmt});">${item.unemp}</td>
 						<c:if test="${item.i_user == loginUser.i_user}">
 							<td>
-								<a href="/board/cmt/del.korea?i_board=${data.i_board}&typ=${param.typ}&i_cmt=${item.i_cmt}">
+								<a href="/board/cmt/del?i_board=${data.i_board}&typ=${param.typ}&i_cmt=${item.i_cmt}">
 									<button>삭제</button>
 								</a>
 								<button onclick="clkCmtMod(${item.i_cmt});">수정</button>								
@@ -74,7 +74,7 @@
 					<c:if test="${item.i_user == loginUser.i_user}">
 						<tr	id="mod_${item.i_cmt}" class="cmd_mod_form">
 							<td	colspan="4">
-							 	<form action="/board/cmt/mod.korea" method="post">
+							 	<form action="/board/cmt/mod" method="post">
 								 	<input type="hidden" name="typ" value="${param.typ}">	
 									<input type="hidden" name="i_board" value="${data.i_board}">
 									<input type="hidden" name="i_cmt" value="${item.i_cmt}">

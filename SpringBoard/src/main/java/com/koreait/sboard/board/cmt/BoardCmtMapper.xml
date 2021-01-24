@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.koreait.sboard.board.cmt.BoardCmtMapper">
+	
+	<insert id="cmtReg">
+		INSERT INTO t_board_cmt (seq, ctnt, i_user, i_board)
+		SELECT IFNULL(MAX(seq), 0) + 1, #{ctnt}, #{i_user}, #{i_board}
+		FROM t_board_cmt
+		WHERE i_board = #{i_board}
+	</insert>
+	
+	<select id="selBoardCmtList" resultType="BoardCmtSEL">
+		SELECT A.i_cmt, A.seq, A.ctnt, A.r_dt, A.i_user, B.nm AS writer_nm , A.emp, A.unemp
+		FROM t_board_cmt A
+		INNER JOIN t_user B
+		ON A.i_user = B.i_user 
+		WHERE i_board = #{i_board}
+		ORDER BY seq DESC
+	</select>
+	
+	<update id="cmtMod">
+		UPDATE t_board_cmt
+		SET ctnt = #{ctnt}
+		WHERE i_cmt = #{i_cmt} AND i_user = #{i_user}
+	</update>
+	
+	
+	<delete id="cmtDel">
+		DELETE FROM t_board_cmt
+		WHERE i_cmt = #{i_cmt} AND i_user = #{i_user}
+	</delete>
+	
+	
+</mapper>

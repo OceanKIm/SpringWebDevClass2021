@@ -5,8 +5,13 @@ import org.apache.ibatis.type.Alias;
 @Alias("BoardSEL")
 public class BoardSEL extends BoardEntity{
 	private String writer_nm;
+	
+	// 좋아요
 	private int favorite_cnt;
 	private int is_favorite;
+	
+	// 페이징
+	private int pageCntMax;
 	
 	public String getWriter_nm() {
 		return writer_nm;
@@ -25,5 +30,11 @@ public class BoardSEL extends BoardEntity{
 	}
 	public void setIs_favorite(int is_favorite) {
 		this.is_favorite = is_favorite;
+	}
+	public int getPageCntMax() {
+		return pageCntMax;
+	}
+	public void setPageCntMax(int pageCntMax) {
+		this.pageCntMax = pageCntMax;
 	}
 }

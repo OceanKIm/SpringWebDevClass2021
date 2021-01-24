@@ -2,7 +2,7 @@
 // 페이지 갯수 선택
 function selPageCnt(typ) {
 	var selectmenu = document.querySelector('#selectmenu');
-	location.href = `/board/list.korea?typ=${typ}&pc=${selectmenu.value}`;
+	location.href = `/board/list.korea?typ=${typ}&line=${selectmenu.value}`;
 }
 
 
@@ -45,7 +45,7 @@ function toggleFavorite(i_board) {
 	var state = 1 - state;
 	
 	// get방식으로 처리
-	axios.get('/board/ajaxFavorite.korea', {
+	axios.get('/board/ajaxFavorite', {
 		params: {	
 			'state':state,
 			'i_board':i_board			

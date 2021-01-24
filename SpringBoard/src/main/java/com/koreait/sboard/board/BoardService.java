@@ -23,6 +23,10 @@ public class BoardService {
 		return mapper.selBoard(p);
 	}
 	
+	BoardSEL selPageCntMax(BoardPARAM p) {
+		return mapper.selPageCntMax(p);
+	}
+	
 	void del(BoardPARAM p) {
 		mapper.del(p);
 	}
@@ -35,4 +39,32 @@ public class BoardService {
 		return mapper.mod(p);
 	}
 	
+	int insFavorite(BoardPARAM p) {
+		return mapper.insFavorite(p);
+	}
+	
+	int delFavortie(BoardPARAM p) {
+		return mapper.delFavortie(p);
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

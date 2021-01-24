@@ -4,6 +4,10 @@ import org.mindrot.jbcrypt.BCrypt;
 
 public class Utils {
 	
+	public static int seletedPageCnt(int page, int line) {
+		return (page - 1) * line;
+	}
+	
 	public static String gensalt() {
 		return BCrypt.gensalt();
 	}
