@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.koreait.sboard.MainController;
 import com.koreait.sboard.MainService;
+import com.koreait.sboard.common.SecurityUtils;
 import com.koreait.sboard.common.Utils;
 import com.koreait.sboard.model.UserEntity;
 
@@ -20,6 +21,9 @@ public class UserController extends MainController{
 
 	@Autowired
 	private MainService mainService;
+	
+	@Autowired
+	private SecurityUtils sUtils;
 	
 	@Autowired
 	private UserService service;
@@ -70,6 +74,16 @@ public class UserController extends MainController{
 		service.insUser(param);
 		return "redirect:/user/login";
 	}
+	
+	@GetMapping("/profile")
+	public void profile(HttpSession hs, Model model) {
+		model.addAttribute("menus", mainService.selManagerBoardList());
+		model.addAttribute("title", "프로필");
+		model.addAttribute("data", sUtils.getLoginUser(hs));
+	}
+	
+	
+	
 }
 
 
